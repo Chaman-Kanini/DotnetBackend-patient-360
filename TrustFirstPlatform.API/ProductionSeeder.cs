@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using Npgsql;
 using TrustFirstPlatform.Domain.Entities;
 using TrustFirstPlatform.Infrastructure.Data;
+using TrustFirstPlatform.Application.Services;
 
 namespace TrustFirstPlatform.API;
 
