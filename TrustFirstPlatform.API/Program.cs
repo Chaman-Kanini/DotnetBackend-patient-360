@@ -72,7 +72,7 @@ builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowReactApp", policy =>
     {
-        policy.WithOrigins("http://localhost:3000", "http://localhost:5173", "http://localhost:5174")
+        policy.WithOrigins("http://localhost:3000", "http://localhost:5173", "http://localhost:5174","https://patient-360-frontend.vercel.app/login")
               .AllowAnyHeader()
               .AllowAnyMethod()
               .AllowCredentials();
