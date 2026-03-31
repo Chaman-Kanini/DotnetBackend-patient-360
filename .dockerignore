@@ -1,0 +1,76 @@
+# Git
+.git
+.gitignore
+.gitattributes
+
+# Build results
+**/bin/
+**/obj/
+**/out/
+
+# Visual Studio
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Visual Studio Code
+.vscode/
+
+# Test results
+**/TestResults/
+**/*.trx
+**/*.coverage
+
+# NuGet
+*.nupkg
+*.snupkg
+**/packages/
+
+# Python
+**/__pycache__/
+**/*.pyc
+**/*.pyo
+**/*.pyd
+.Python
+**/*.so
+**/*.egg
+**/*.egg-info
+**/dist/
+**/build/
+**/.pytest_cache/
+**/.venv/
+**/venv/
+**/ENV/
+
+# Uploads and data
+**/uploads/*
+!**/uploads/.gitkeep
+
+# Logs
+**/logs/
+**/*.log
+
+# OS files
+.DS_Store
+Thumbs.db
+*~
+*.swp
+
+# Documentation
+README.md
+LICENSE
+*.md
+
+# Docker
+Dockerfile
+docker-compose*.yml
+.dockerignore
+
+# IDE
+*.code-workspace
+
+# Temporary files
+**/tmp/
+**/temp/

@@ -1,0 +1,48 @@
+{
+  "ConnectionStrings": {
+    "DefaultConnection": "Host=localhost;Database=TrustFirstPlatform;Username=postgres;Password=your_password_here"
+  },
+  "JwtSettings": {
+    "SecretKey": "your-super-secret-key-that-is-at-least-256-bits-long-for-hmac-sha256",
+    "Issuer": "TrustFirstPlatform",
+    "Audience": "TrustFirstPlatform",
+    "ExpirationMinutes": 15,
+    "RefreshTokenExpirationDays": 7
+  },
+  "EmailSettings": {
+    "SmtpServer": "smtp.gmail.com",
+    "SmtpPort": 587,
+    "SmtpUsername": "your-email@example.com",
+    "SmtpPassword": "your-app-password-here",
+    "FromEmail": "your-email@example.com",
+    "FromName": "TrustFirst Platform",
+    "EnableSsl": true
+  },
+  "App": {
+    "FrontendBaseUrl": "http://localhost:3000"
+  },
+  "RateLimitOptions": {
+    "LoginAttemptsPerMinute": 5,
+    "PasswordResetAttemptsPerHour": 3,
+    "RegistrationAttemptsPerHour": 3
+  },
+  "AzureOpenAI": {
+    "Endpoint": "https://your-resource.cognitiveservices.azure.com/",
+    "DeploymentName": "your-deployment-name",
+    "ApiVersion": "2024-12-01-preview",
+    "ApiKey": "your-azure-openai-api-key-here"
+  },
+  "RagApi": {
+    "BaseUrl": "https://rag-service-patient-360.onrender.com"
+  },
+  "Python": {
+    "Path": "python"
+  },
+  "Logging": {
+    "LogLevel": {
+      "Default": "Information",
+      "Microsoft.AspNetCore": "Warning"
+    }
+  },
+  "AllowedHosts": "*"
+}

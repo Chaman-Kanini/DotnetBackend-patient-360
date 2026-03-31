@@ -1,0 +1,57 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:16
+    container_name: trustfirst-postgres
+    environment:
+      POSTGRES_DB: TrustFirstPlatform
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: admin
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - trustfirst-network
+
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: trustfirst-api
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Docker
+      - ASPNETCORE_URLS=http://+:8080
+      - ConnectionStrings__DefaultConnection=Host=postgres;Database=TrustFirstPlatform;Username=postgres;Password=admin
+      - JwtSettings__SecretKey=your-super-secret-key-that-is-at-least-256-bits-long-for-hmac-sha256
+      - JwtSettings__Issuer=TrustFirstPlatform
+      - JwtSettings__Audience=TrustFirstPlatform
+      - JwtSettings__ExpirationMinutes=15
+      - JwtSettings__RefreshTokenExpirationDays=7
+      - App__FrontendBaseUrl=http://localhost:3000
+      - RagApi__BaseUrl=https://rag-service-patient-360.onrender.com
+      - Python__Path=python3
+    ports:
+      - "5000:8080"
+    depends_on:
+      postgres:
+        condition: service_healthy
+    volumes:
+      - ./uploads:/app/uploads
+    networks:
+      - trustfirst-network
+    restart: unless-stopped
+
+volumes:
+  postgres-data:
+    driver: local
+
+networks:
+  trustfirst-network:
+    driver: bridge
